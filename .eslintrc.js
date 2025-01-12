@@ -3,6 +3,7 @@ module.exports = {
 	plugins: ["prettier"],
 	rules: {
 		"react-hooks/exhaustive-deps": "off",
+		"no-unused-expressions": "off",
 		"prettier/prettier": [
 			"off",
 			{

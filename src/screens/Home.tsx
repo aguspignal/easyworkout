@@ -1,18 +1,28 @@
-import { StyleSheet, Text, View } from "react-native"
-import { useColorTheme } from "../hooks/useColorTheme"
+import { StyleSheet, UnistylesRuntime } from "react-native-unistyles"
+import { Text, View } from "react-native"
+import ButtonFilled from "../components/buttons/ButtonFilled"
 
 export default function Home() {
+	function toggleTheme() {
+		var currentTheme = UnistylesRuntime.themeName
+		currentTheme === "light"
+			? UnistylesRuntime.setTheme("dark")
+			: UnistylesRuntime.setTheme("light")
+	}
+
 	return (
 		<View style={styles.container}>
-			<Text>Home</Text>
+			<Text style={styles.text}>This is the home</Text>
+			<ButtonFilled onPress={toggleTheme} title="Toggle Theme" />
 		</View>
 	)
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
 	container: {
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "center",
+		backgroundColor: theme.colors.background,
 	},
-})
+	text: {
+		color: theme.colors.text,
+	},
+}))
